@@ -1,0 +1,164 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>AmChart-Line</title>
+	<link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="lib/bootstrap/css/bootstrap-theme.min.css" />
+	<link rel="stylesheet" href="lib/amchart/css/amchart.css" />
+</head>
+<body>
+	<section>
+		<div class="container">
+			<div class="row form-horizontal"><br>
+				<div class="col-md-12">
+					<div class="chartdiv" id="chartdiv-line"></div>
+				</div>
+			</div>
+		</div>
+	</section>
+    
+    <script src="lib/bootstrap/js/jquery.js"></script>
+    <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="lib/amchart/js/amcharts.js"></script>
+	<script src="lib/amchart/js/serial.js"></script>
+	<script src="lib/amchart/js/light.js"></script>
+    <script type="text/javascript">
+    var chart = AmCharts.makeChart("chartdiv-line", {
+        "type": "serial",
+        "titles": [ {
+		    "text": "Place taken",
+		    "size": 16
+		  } ],
+        "theme": "light",
+        "legend": {
+            "horizontalGap": 10,
+            "maxColumns": 1,
+            "position": "right",
+    		"useGraphSettings": true,
+    		"markerSize": 10
+        },
+        "dataProvider": [{
+            "year": 1930,
+            "italy": 2,
+            "germany": 3,
+            "uk": 1
+        }, {
+            "year": 1934,
+            "italy": 1,
+            "germany": 4,
+            "uk": 6
+        }, {
+            "year": 1938,
+            "italy": 2,
+            "germany": 3,
+            "uk": 1
+        }, {
+            "year": 1950,
+            "italy": 3,
+            "germany": 4,
+            "uk": 1
+        }, {
+            "year": 1954,
+            "italy": 5,
+            "germany": 1,
+            "uk": 2
+        }, {
+            "year": 1958,
+            "italy": 3,
+            "germany": 2,
+            "uk": 1
+        }, {
+            "year": 1962,
+            "italy": 1,
+            "germany": 2,
+            "uk": 3
+        }, {
+            "year": 1966,
+            "italy": 2,
+            "germany": 1,
+            "uk": 5
+        }, {
+            "year": 1970,
+            "italy": 3,
+            "germany": 5,
+            "uk": 2
+        }, {
+            "year": 1974,
+            "italy": 4,
+            "germany": 3,
+            "uk": 6
+        }, {
+            "year": 1978,
+            "italy": 1,
+            "germany": 2,
+            "uk": 4
+        }, {
+            "year": 1979,
+            "italy": 3,
+            "germany": 2,
+            "uk": 6
+        }
+        , {
+            "year": 1980,
+            "italy": 4,
+            "germany": 5,
+            "uk": 2
+        }],
+        "valueAxes": [{
+            "integersOnly": false,
+            "maximum": 8,
+            "minimum": 0,
+            "reversed": false,
+            "axisAlpha": 1,
+            "dashLength": 0,
+            "gridCount": 10,
+            "position": "left",
+            "title": "Place taken"
+        }],
+        "startDuration": 0.5,
+        "graphs": [{
+            "balloonText": "place taken by Italy in [[category]]: [[value]]",
+            "bullet": "round",
+            "hidden": true,
+            "title": "Italy",
+            "valueField": "italy",
+    		"fillAlphas": 0
+        }, {
+            "balloonText": "place taken by Germany in [[category]]: [[value]]",
+            "bullet": "round",
+            "title": "Germany",
+            "valueField": "germany",
+    		"fillAlphas": 0
+        }, {
+            "balloonText": "place taken by UK in [[category]]: [[value]]",
+            "bullet": "round",
+            "title": "United Kingdom",
+            "valueField": "uk",
+    		"fillAlphas": 0
+        }],
+        "chartCursor": {
+            "cursorAlpha": 0,
+            "zoomable": false
+        },
+        "categoryField": "year",
+        "categoryAxis": {
+            "gridPosition": "start",
+            "axisAlpha": 0,
+            "fillAlpha": 0.05,
+            "fillColor": "#000000",
+            "gridAlpha": 0,
+            "position": "top",
+            "dashLength": 1,
+            "minorGridEnabled": true
+        },
+        "export": {
+        	"enabled": true,
+            "position": "bottom-right"
+         }
+    });
+    </script>
+</body>
+</html>

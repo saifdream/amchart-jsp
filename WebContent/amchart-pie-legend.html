@@ -1,0 +1,117 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>AmChart-Pie</title>
+	<link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="lib/bootstrap/css/bootstrap-theme.min.css" />
+	<link rel="stylesheet" href="lib/amchart/css/amchart.css" />
+</head>
+<body>
+	<section>
+		<div class="container">
+			<div class="row form-horizontal"><br>
+				<div class="col-md-12">
+					<div class="container" id="chartdiv-pie"></div>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+	<script src="lib/bootstrap/js/jquery.js"></script>
+	<script src="lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="lib/amchart/js/amcharts.js"></script>
+	<script src="lib/amchart/js/pie.js"></script>
+	<script src="lib/amchart/js/light.js"></script>
+    <script type="text/javascript">
+    var chart = AmCharts.makeChart("chartdiv-pie", {
+    	  "type": "pie",
+    	  "titles": [ {
+    		    "text": "Visitors countries",
+    		    "size": 14
+    		  } ],
+    	  "startDuration": 0,
+    	   "theme": "light",
+    	  "addClassNames": true,
+    	  "legend":{
+    	   	"position":"right",
+    	    "autoMargins":true
+    	  },
+    	  "innerRadius": "0%",
+    	  "defs": {
+    	    "filter": [{
+    	      "id": "shadow",
+    	      "width": "200%",
+    	      "height": "200%",
+    	      "feOffset": {
+    	        "result": "offOut",
+    	        "in": "SourceAlpha",
+    	        "dx": 0,
+    	        "dy": 0
+    	      },
+    	      "feGaussianBlur": {
+    	        "result": "blurOut",
+    	        "in": "offOut",
+    	        "stdDeviation": 5
+    	      },
+    	      "feBlend": {
+    	        "in": "SourceGraphic",
+    	        "in2": "blurOut",
+    	        "mode": "normal"
+    	      }
+    	    }]
+    	  },
+    	  "dataProvider": [{
+    	    "country": "Lithuania",
+    	    "litres": 501.9
+    	  }, {
+    	    "country": "Czech Republic",
+    	    "litres": 301.9
+    	  }, {
+    	    "country": "Ireland",
+    	    "litres": 201.1
+    	  }, {
+    	    "country": "Germany",
+    	    "litres": 165.8
+    	  }, {
+    	    "country": "Australia",
+    	    "litres": 139.9
+    	  }, {
+    	    "country": "Austria",
+    	    "litres": 128.3
+    	  }, {
+    	    "country": "UK",
+    	    "litres": 99
+    	  }, {
+    	    "country": "Belgium",
+    	    "litres": 60
+    	  }, {
+    	    "country": "The Netherlands",
+    	    "litres": 50
+    	  }],
+    	  "valueField": "litres",
+    	  "titleField": "country",
+    	  "export": {
+    	    "enabled": true
+    	  }
+    	});
+
+    	chart.addListener("init", handleInit);
+
+    	chart.addListener("rollOverSlice", function(e) {
+    	  handleRollOver(e);
+    	});
+
+    	function handleInit(){
+    	  chart.legend.addListener("rollOverItem", handleRollOver);
+    	}
+
+    	function handleRollOver(e){
+    	  var wedge = e.dataItem.wedge.node;
+    	  wedge.parentNode.appendChild(wedge);  
+    	}
+    </script>
+</body>
+</html>
